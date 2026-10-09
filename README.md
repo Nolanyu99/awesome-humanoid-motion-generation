@@ -1,5 +1,7 @@
 # Awesome Humanoid Motion Generation for Loco-Manipulation
 
+**English** | [简体中文](README.zh-CN.md)
+
 > Scope: papers and projects that **generate, plan, predict, reconstruct, or expose an intermediate whole-body motion representation for humanoid loco-manipulation**, followed by tracking, control, policy learning, or data generation.
 
 This list focuses on the motion layer between task intent/perception and low-level whole-body execution. It is not intended to cover every end-to-end VLA, teleoperation system, or controller that directly emits joint actions.
@@ -21,6 +23,10 @@ This list focuses on the motion layer between task intent/perception and low-lev
 | SUGAR | 2026 | Synthetic Motion / Data Generation | Human-video kinematic interaction priors, physics-based RL refinement, then command generation | Unstructured human video → human/object motion + contacts → feasible robot skills/commands | Hierarchical autonomous policy with command generator and command tracker | ✅ Humanoid hardware | [Project](https://tianshuwu.github.io/sugar-humanoid/) · [arXiv](https://arxiv.org/abs/2605.20373) · [GitHub](https://github.com/tianshuwu/SUGAR) |
 | MotionWAM | 2026 | Learned Motion Interface | Unified whole-body motion latent and motion tokens conditioned on intermediate video-world-model denoising features | Egocentric RGB → unified motion tokens spanning locomotion, torso, height, feet, and hands | End-to-end real-time world-action model / whole-body policy | ✅ Unitree G1 | [Project](https://dit4dit.github.io/MotionWAM/) · [arXiv](https://arxiv.org/abs/2606.09215) · GitHub: TBD |
 | Whole-Body UMI | 2026 | Learned Motion Interface | Task-agnostic, end-effector-conditioned real-time whole-body motion generator | UMI RGB → diffusion-policy EE trajectory → whole-body motion | Asynchronous hierarchy with WB-UMI motion generator and whole-body controller | ✅ Unitree G1 | [Project](https://wholebody-umi.github.io/) · [arXiv](https://arxiv.org/abs/2609.22829) · GitHub: TBD |
+| λ₀ / HumanVerse-500 | 2026 | Learned Motion Interface | Whole-body human-motion mid-training in a shared human/robot representation, including a G1-compatible motion latent | Egocentric video + language + human body/hand motion → whole-body humanoid actions | Three-stage VLA pretraining and robot post-training with embodiment-specific action interfaces | ✅ Unitree G1 | Project: TBD · [arXiv](https://arxiv.org/abs/2610.00438) · GitHub: TBD |
+| OCLO | 2026 | Motion Planning / Optimization | Analytic reachability prior with policy-in-the-loop sampling generates pelvis height and torso orientation online | Two end-effector targets + measured forces → compliant EE references and online posture | Frozen lower-body RL policy, differential IK, and optional CEM posture refinement | ✅ Unitree G1 | [Project](https://oclo-humanoid.github.io/) · [arXiv](https://arxiv.org/abs/2610.05678) · GitHub: TBD |
+| InterMimicGen | 2026 | Synthetic Motion / Data Generation | Contact-preserving retargeting plus iterative task-preserving motion augmentation and physics filtering | Human–object motion datasets → robot references → expanding executable motion collection | Physics-based generalist tracker validates motions and transfers them to real robots | ✅ Real humanoid robots | [Project](https://sirui-xu.github.io/InterMimicGen/) · [arXiv](https://arxiv.org/abs/2610.06850) · GitHub: TBD |
+| Workhorse | 2026 | Learned Motion Interface | Flow-matching visual planner predicts chunks of torso, wrist, and foot target poses | Egocentric RGB + five-link motion history → 1.16 s five-link target chunk | RL whole-body tracker consumes short target horizons and executes them closed-loop | ✅ Unitree G1 | [Project](https://hybridrobotics.github.io/workhorse/) · [arXiv](https://arxiv.org/abs/2610.09117) · GitHub/code: TBD |
 
 ## Generative Motion Prior
 
@@ -74,6 +80,14 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Hardware:** real humanoid robot.
 - **Links:** [project](https://atarilab.github.io/motiondisco.io/) · [arXiv](https://arxiv.org/abs/2606.06139) · code: TBD
 
+### OCLO — 2026
+
+- **Representation / generator:** an analytic reachability prior generates pelvis height and torso orientation online from sparse end-effector commands; policy-in-the-loop sampling can further refine the posture.
+- **Input → output:** two end-effector targets and measured interaction forces → compliant end-effector references plus dynamically selected whole-body posture.
+- **Execution:** a frozen lower-body RL policy works with differential IK; an optional CEM optimizer evaluates candidate postures through frozen-policy rollouts.
+- **Hardware:** Unitree G1.
+- **Links:** [project](https://oclo-humanoid.github.io/) · [arXiv](https://arxiv.org/abs/2610.05678) · code: TBD
+
 ## Learned Motion Interface
 
 ### VisualMimic — 2025
@@ -108,6 +122,23 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Hardware:** Unitree G1.
 - **Links:** [project](https://wholebody-umi.github.io/) · [arXiv](https://arxiv.org/abs/2609.22829) · code: TBD
 
+### λ₀ / HumanVerse-500 — 2026
+
+- **Representation / generator:** a three-stage whole-body VLA uses a shared human/robot representation; human-motion mid-training includes a G1-compatible whole-body motion latent and dexterous hand commands.
+- **Input → output:** egocentric video, language, and body/hand history → embodiment-specific whole-body humanoid actions.
+- **Execution:** interaction pretraining is followed by whole-body human-motion mid-training and task-specific robot post-training.
+- **Hardware:** Unitree G1.
+- **Scope note:** this is a boundary entry because it is an integrated VLA rather than a separately deployed motion generator/tracker hierarchy.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2610.00438) · code/data: announced, release link TBD
+
+### Workhorse — 2026
+
+- **Representation / generator:** a flow-matching visual planner predicts target-pose chunks for five links: torso, both wrists, and both feet.
+- **Input → output:** four egocentric images and roughly one second of five-link history → a 1.16-second five-link target trajectory, replanned at 5 Hz.
+- **Execution:** an RL whole-body tracker reads the next short horizon of each chunk and coordinates the full robot; planner and tracker are trained separately from the same robot-free human demonstrations.
+- **Hardware:** Unitree G1, with tasks including box sorting with hand/foot interaction, catching, and suitcase toppling/climbing.
+- **Links:** [project](https://hybridrobotics.github.io/workhorse/) · [arXiv](https://arxiv.org/abs/2610.09117) · code: TBD
+
 ## Synthetic Motion / Data Generation
 
 ### HumanoidMimicGen — 2026
@@ -133,6 +164,14 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Execution:** refined skills are distilled into a hierarchical command generator and command tracker, with no reference motion required at inference.
 - **Hardware:** real humanoid robot.
 - **Links:** [project](https://tianshuwu.github.io/sugar-humanoid/) · [arXiv](https://arxiv.org/abs/2605.20373) · [code](https://github.com/tianshuwu/SUGAR)
+
+### InterMimicGen — 2026
+
+- **Representation / generator:** contact-preserving retargeting creates robot references from heterogeneous human–object motion data, followed by iterative, task-preserving spatial/body-motion augmentation.
+- **Input → output:** motion-captured human–object interactions → humanoid references → a continually expanding set of physically executable robot motions.
+- **Execution:** a physics-based generalist tracker executes candidates; successful variants pass task checks, enter the next training round, and seed further augmentation.
+- **Hardware:** transfer to real humanoid robots is reported.
+- **Links:** [project](https://sirui-xu.github.io/InterMimicGen/) · [arXiv](https://arxiv.org/abs/2610.06850) · code: TBD
 
 ## Contributing
 
