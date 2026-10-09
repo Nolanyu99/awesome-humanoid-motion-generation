@@ -5,7 +5,7 @@ Thanks for helping keep this list useful and verifiable.
 To propose a paper or project, please open a pull request and provide at least:
 
 - **Title** — the official paper or project title.
-- **Year** — preprint or publication year; note both if they differ materially.
+- **Date** — first public preprint date in `YYYY-MM` form; also note the publication year when it differs materially.
 - **Link** — preferably the official project page and arXiv/publisher page; include an official GitHub repository when one is confirmed.
 - **Category** — choose one of:
   - Generative Motion Prior
