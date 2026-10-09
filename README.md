@@ -27,6 +27,23 @@ This list focuses on the motion layer between task intent/perception and low-lev
 | OCLO | 2026-10 | Motion Planning / Optimization | Analytic reachability prior with policy-in-the-loop sampling generates pelvis height and torso orientation online | Two end-effector targets + measured forces → compliant EE references and online posture | Frozen lower-body RL policy, differential IK, and optional CEM posture refinement | ✅ Unitree G1 | [Project](https://oclo-humanoid.github.io/) · [arXiv](https://arxiv.org/abs/2610.05678) · GitHub: TBD |
 | InterMimicGen | 2026-10 | Synthetic Motion / Data Generation | Contact-preserving retargeting plus iterative task-preserving motion augmentation and physics filtering | Human–object motion datasets → robot references → expanding executable motion collection | Physics-based generalist tracker validates motions and transfers them to real robots | ✅ Real humanoid robots | [Project](https://sirui-xu.github.io/InterMimicGen/) · [arXiv](https://arxiv.org/abs/2610.06850) · GitHub: TBD |
 | Workhorse | 2026-10 | Learned Motion Interface | Flow-matching visual planner predicts chunks of torso, wrist, and foot target poses | Egocentric RGB + five-link motion history → 1.16 s five-link target chunk | RL whole-body tracker consumes short target horizons and executes them closed-loop | ✅ Unitree G1 | [Project](https://hybridrobotics.github.io/workhorse/) · [arXiv](https://arxiv.org/abs/2610.09117) · GitHub/code: TBD |
+| Task and Motion Planning for Humanoid Loco-manipulation | 2025-08 | Motion Planning / Optimization | Contact-mode search unifies task, contact, and whole-body motion planning | Symbolic task + robot/object/environment constraints → dynamically feasible long-horizon plan | Optimization with full-body dynamics and actuation constraints | TBD | Project: TBD · [arXiv](https://arxiv.org/abs/2508.14099) · GitHub: TBD |
+| Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation | 2025-08 | Motion Planning / Optimization | Learned differentiable task-space reachability maps constrain continuous trajectory optimization | Robot kinematics + task/contact goals → footsteps, multi-contact, or loco-manipulation motion | Continuous optimization | TBD | Project: TBD · [arXiv](https://arxiv.org/abs/2508.11275) · GitHub: TBD |
+| OmniRetarget | 2025-09 | Synthetic Motion / Data Generation | Interaction-mesh retargeting preserves agent–terrain–object geometry and contacts | Human motion + scene/object configuration → augmented robot trajectories | Proprioceptive RL policies track generated trajectories | ✅ Unitree G1 | [Project](https://omniretarget.github.io/) · [arXiv](https://arxiv.org/abs/2509.26633) · GitHub: TBD |
+| GenMimic | 2025-12 | Synthetic Motion / Data Generation | Generated videos are lifted to 4D human motion and retargeted to robot keypoints | Generated human video → 4D motion → humanoid trajectory | Physics-aware 3D-keypoint RL tracker | ✅ Unitree G1 | [Project](https://genmimic.github.io/) · [arXiv](https://arxiv.org/abs/2512.05094) · GitHub: TBD |
+| HuMI | 2026-02 | Learned Motion Interface | Portable robot-free hardware captures rich whole-body human motion for hierarchical policy learning | Wrist views + tracked human motion + gripper state → feasible humanoid whole-body skill | High-level diffusion policy and low-level whole-body controller | ✅ Humanoid hardware | [Project](https://humanoid-manipulation-interface.github.io/) · [arXiv](https://arxiv.org/abs/2602.06643) · GitHub: TBD |
+| BifrostUMI | 2026-05 | Learned Motion Interface | UMI-inspired grippers and lightweight VR trackers capture sparse whole-body keypoints | Wrist RGB + pelvis/wrist/foot keypoints + gripper state → robot-native whole-body reference | Keypoint policy, spatial retargeting, and whole-body controller | ✅ Unitree G1 | [Project](https://baai-aether.github.io/BifrostUMI/) · [arXiv](https://arxiv.org/abs/2605.03452) · GitHub: TBD |
+| Imagine2Real | 2026-05 | Synthetic Motion / Data Generation | Video priors are converted to sparse base/hand/object 4D point trajectories | Generated interaction video → sparse 4D keypoints → robot interaction motion | Keypoint tracker searches a behavior-foundation-model latent space | ✅ Humanoid hardware | Project: TBD · [arXiv](https://arxiv.org/abs/2605.22272) · GitHub: TBD |
+| WT-UMI | 2026-06 | Learned Motion Interface | Force-supervised planner predicts end-effector pose chunks and contact-force trajectories | Tactile images + forces + EE poses → pose and force references | Tactile admittance controller | ✅ Humanoid hardware | [Project](https://wt-umi.github.io/WTUMI/) · [arXiv](https://arxiv.org/abs/2606.13232) · GitHub: TBD |
+| ReactiveBFM | 2026-06 | Learned Motion Interface | Autoregressive generative planner produces closed-loop spatial-reference chunks | Text command + current physical state → reactive whole-body reference trajectory | Asynchronous replanning with a pretrained BFM tracker | ✅ Unitree G1 | [Project](https://xiao-chen.tech/) · [arXiv](https://arxiv.org/abs/2606.30362) · GitHub: TBD |
+| TEXEDO | 2026-06 | Generative Motion Prior | Samples text-conditioned motions and selects candidates with learned feasibility and semantic verifiers | Text prompt → candidate robot motions → executable selected reference | Whole-body tracking controller | ✅ Unitree G1 | Project: TBD · [arXiv](https://arxiv.org/abs/2606.22998) · GitHub: TBD |
+| VLK | 2026-06 | Synthetic Motion / Data Generation | Synthetic vision-language-kinematics supervision in reconstructed 3D scenes | Language + egocentric image → short-horizon whole-body kinematic trajectory | Whole-body tracker | ✅ Unitree G1 | [Project](https://vision-language-kinematics.github.io/) · [arXiv](https://arxiv.org/abs/2606.30645) · GitHub: TBD |
+| GenHOI | 2026-06 | Synthetic Motion / Data Generation | Generated interaction video is converted to contact constraints and an optimized reference motion | Text + reconstructed scene → video/contact cues → refined robot/object trajectory | Closed-loop tracking controller | ✅ Humanoid hardware | Project: TBD · [arXiv](https://arxiv.org/abs/2606.12995) · GitHub: TBD |
+| RoboReact | 2026-08 | Synthetic Motion / Data Generation | Generated egocentric videos yield geometry-preserving 3D interaction keyframes | One RGB-D view → generated video → retargeted/refined whole-body skill | Online object-centric regrounding and whole-body controller | ✅ Humanoid hardware | Project: TBD · [arXiv](https://arxiv.org/abs/2608.03387) · GitHub: TBD |
+| HIGenNTO | 2026-09 | Motion Planning / Optimization | Optimizes the initial noise of a text-motion model under contact, collision, and support constraints | Task/scene program + sparse constraints → whole-body interaction reference | Tracking and depth-conditioned visuomotor policies | ✅ Unitree G1 | Project: TBD · [arXiv](https://arxiv.org/abs/2609.22611) · GitHub: TBD |
+| KINO | 2026-09 | Learned Motion Interface | Whole-body robot/object keyframes bridge VLM planning and RL control | Language + scene + feedback → retargeted keyframe sequence | Keyframe-conditioned whole-body policy | ✅ Unitree G1 | Project: TBD · [arXiv](https://arxiv.org/abs/2609.18869) · GitHub: TBD |
+| Sample, Simulate, Select | 2026-09 | Generative Motion Prior | Samples text-to-motion candidates and ranks them with controller-in-the-loop physics rollouts | Text prompt → retargeted candidates → most executable whole-body reference | SONIC tracking policy | ✅ Unitree G1 | Project: TBD · [arXiv](https://arxiv.org/abs/2609.26420) · GitHub: TBD |
+| WholeBodyWAM: Learning Whole-Body World Action Models with Scalable Motion Priors | 2026-09 | Generative Motion Prior | Language-conditioned Motion Expert predicts future motion in a unified space pretrained on 4K+ hours | Language + visual/robot context → future whole-body motion prior → embodiment actions | Integrated Video, Motion, and Action Experts | ✅ Humanoid hardware | Project: TBD · [arXiv](https://arxiv.org/abs/2609.18197) · GitHub: TBD |
 
 ## Generative Motion Prior
 
@@ -54,6 +71,28 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Hardware:** Unitree G1.
 - **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2606.26855) · code: TBD
 
+### TEXEDO — 2026-06
+
+- **Representation / generator:** samples motions from a pretrained text-conditioned generator, then uses controller-derived feasibility and semantic verifiers to select an executable reference.
+- **Input → output:** text prompt → multiple robot-motion candidates → feasible, task-aligned whole-body reference.
+- **Execution:** a whole-body controller tracks the selected motion; real G1 deployment is reported.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2606.22998) · code: TBD
+
+### Sample, Simulate, Select — 2026-09
+
+- **Representation / generator:** samples frozen text-to-motion outputs, retargets them to G1, and ranks candidates using full-physics rollouts of the deployment tracker.
+- **Input → output:** text prompt → retargeted candidates → controller-verified motion reference.
+- **Execution:** SONIC tracks the selected motion; all 177 hardware-gated clips were executed on a real G1.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2609.26420) · code: TBD
+
+### WholeBodyWAM: Learning Whole-Body World Action Models with Scalable Motion Priors — 2026-09
+
+- **Representation / generator:** a language-conditioned Motion Expert is pretrained on UniMotion-4K to predict future motion in a canonical whole-body space.
+- **Input → output:** language and multimodal robot context → predicted future whole-body motion → embodiment-specific actions.
+- **Execution:** asymmetric mixture-of-transformers attention integrates Video, Motion, and Action Experts during robot post-training.
+- **Scope note:** this is distinct from MotionWAM (2026-06) and from the separate WBC-grounded WholeBodyWAM paper, arXiv:2609.16644.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2609.18197) · code: TBD
+
 ## Motion Planning / Optimization
 
 ### Opt2Skill — 2024-09 preprint / 2025 publication
@@ -72,6 +111,22 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Hardware:** simulation only in the reported evaluation.
 - **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2504.16843) · code: TBD
 
+### Task and Motion Planning for Humanoid Loco-manipulation — 2025-08
+
+- **Representation / generator:** contact-mode changes act as symbolic actions in a unified task, contact, and whole-body motion planner.
+- **Input → output:** task specification plus robot/object/environment constraints → long-horizon, dynamically feasible loco-manipulation plan.
+- **Execution:** trajectory optimization incorporates whole-body dynamics, actuation limits, and interaction constraints.
+- **Hardware:** physical-hardware status is not confirmed here.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2508.14099) · code: TBD
+
+### Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation — 2025-08
+
+- **Representation / generator:** a learned scalar reachability field provides differentiable task-space constraints for continuous optimization.
+- **Input → output:** kinematic samples and task/contact goals → footstep, multi-contact, or loco-manipulation motion.
+- **Execution:** continuous optimization produces kinematically reachable humanoid trajectories.
+- **Hardware:** physical-hardware status is not confirmed here.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2508.11275) · code: TBD
+
 ### MotionDisco — 2026-06
 
 - **Representation / generator:** LLM-guided evolutionary search discovers discrete interaction/contact programs; a sequential kinodynamic optimizer turns feasible programs into full motions.
@@ -79,6 +134,14 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Execution:** RL policies track the discovered reference trajectories on hardware.
 - **Hardware:** real humanoid robot.
 - **Links:** [project](https://atarilab.github.io/motiondisco.io/) · [arXiv](https://arxiv.org/abs/2606.06139) · code: TBD
+
+### HIGenNTO — 2026-09
+
+- **Representation / generator:** optimizes the initial noise of a pretrained text-conditioned motion model under sparse spatiotemporal, contact, collision, and support constraints.
+- **Input → output:** task/scene program and constraints → realistic, physically grounded humanoid–scene interaction reference.
+- **Execution:** tracking policies execute the references; generated data also trains onboard depth-conditioned visuomotor policies.
+- **Hardware:** Unitree G1.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2609.22611) · code: TBD
 
 ### OCLO — 2026-10
 
@@ -89,6 +152,38 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Links:** [project](https://oclo-humanoid.github.io/) · [arXiv](https://arxiv.org/abs/2610.05678) · code: TBD
 
 ## Learned Motion Interface
+
+### HuMI — 2026-02
+
+- **Representation / generator:** portable robot-free hardware captures whole-body human motion, wrist observations, and manipulation state for a hierarchical policy.
+- **Input → output:** human demonstration observations and motion → feasible humanoid whole-body skill.
+- **Execution:** a high-level diffusion policy supplies whole-body targets to a low-level controller.
+- **Hardware:** real humanoid experiments across five tasks.
+- **Links:** [project](https://humanoid-manipulation-interface.github.io/) · [arXiv](https://arxiv.org/abs/2602.06643) · code: TBD
+
+### BifrostUMI — 2026-05
+
+- **Representation / generator:** UMI-inspired grippers and lightweight VR devices record wrist RGB, gripper actions, and sparse pelvis/wrist/foot keypoints.
+- **Input → output:** robot-free demonstration → predicted future keypoints → robot-native whole-body reference.
+- **Execution:** spatial keypoint retargeting and a whole-body controller execute the reference.
+- **Hardware:** Unitree G1 in five real-world scenarios.
+- **Links:** [project](https://baai-aether.github.io/BifrostUMI/) · [arXiv](https://arxiv.org/abs/2605.03452) · code: TBD
+
+### WT-UMI — 2026-06
+
+- **Representation / generator:** a wearable tactile interface records tactile images, contact forces, and end-effector poses; a force-supervised planner predicts pose chunks and force trajectories.
+- **Input → output:** multimodal contact demonstration → end-effector pose and force references.
+- **Execution:** the predicted force conditions a tactile admittance controller.
+- **Hardware:** real humanoid contact-rich manipulation; supports both human demonstrations and teleoperation.
+- **Links:** [project](https://wt-umi.github.io/WTUMI/) · [arXiv](https://arxiv.org/abs/2606.13232) · code: TBD
+
+### ReactiveBFM — 2026-06
+
+- **Representation / generator:** a generative planner produces spatial-reference chunks from imperfect physical states and replans asynchronously.
+- **Input → output:** text command and current robot state → reactive whole-body reference trajectory.
+- **Execution:** a pretrained behavior-foundation-model tracker follows temporally ensembled chunks.
+- **Hardware:** Unitree G1.
+- **Links:** [project](https://xiao-chen.tech/) · [arXiv](https://arxiv.org/abs/2606.30362) · code: TBD
 
 ### VisualMimic — 2025-09
 
@@ -122,6 +217,14 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Hardware:** Unitree G1.
 - **Links:** [project](https://wholebody-umi.github.io/) · [arXiv](https://arxiv.org/abs/2609.22829) · code: TBD
 
+### KINO — 2026-09
+
+- **Representation / generator:** each intermediate keyframe specifies a whole-body robot pose and, when applicable, an object pose.
+- **Input → output:** language, scene observations, and execution feedback → selected and scene-retargeted keyframes.
+- **Execution:** a keyframe-conditioned whole-body RL policy generates joint actions to reach each goal.
+- **Hardware:** Unitree G1.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2609.18869) · code: TBD
+
 ### λ₀ / HumanVerse-500 — 2026-09
 
 - **Representation / generator:** a three-stage whole-body VLA uses a shared human/robot representation; human-motion mid-training includes a G1-compatible whole-body motion latent and dexterous hand commands.
@@ -140,6 +243,54 @@ This list focuses on the motion layer between task intent/perception and low-lev
 - **Links:** [project](https://hybridrobotics.github.io/workhorse/) · [arXiv](https://arxiv.org/abs/2610.09117) · code: TBD
 
 ## Synthetic Motion / Data Generation
+
+### OmniRetarget — 2025-09
+
+- **Representation / generator:** an interaction mesh preserves spatial and contact relationships among the agent, terrain, and manipulated objects during retargeting.
+- **Input → output:** human motion and a target robot/terrain/object configuration → kinematically feasible, interaction-preserving trajectories.
+- **Execution:** simple proprioceptive RL policies track the generated long-horizon motions.
+- **Hardware:** Unitree G1.
+- **Links:** [project](https://omniretarget.github.io/) · [arXiv](https://arxiv.org/abs/2509.26633) · code: TBD
+
+### GenMimic — 2025-12
+
+- **Representation / generator:** generated videos are lifted into 4D human motion, retargeted to the humanoid, and represented as 3D keypoint trajectories.
+- **Input → output:** generated human video → 4D human representation → robot keypoint reference.
+- **Execution:** a physics-aware RL tracker with keypoint-weighted rewards executes noisy generated motions.
+- **Hardware:** Unitree G1.
+- **Links:** [project](https://genmimic.github.io/) · [arXiv](https://arxiv.org/abs/2512.05094) · code: TBD
+
+### Imagine2Real — 2026-05
+
+- **Representation / generator:** robot and object motion are represented as sparse 4D point trajectories for the base, hands, and object.
+- **Input → output:** generated HOI video → sparse interaction keypoints → robot interaction reference.
+- **Execution:** a keypoint tracker searches within a behavior-foundation-model latent space to preserve natural gait.
+- **Hardware:** zero-shot physical humanoid deployment in a motion-capture setup.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2605.22272) · code: TBD
+
+### GenHOI — 2026-06
+
+- **Representation / generator:** generated video provides contact events and object-centric geometric constraints; recovered motion is refined for scale, contact, and new relative poses.
+- **Input → output:** language and reconstructed scene → interaction video/contact cues → optimized robot–object trajectory.
+- **Execution:** a closed-loop tracking controller executes the refined reference.
+- **Hardware:** real humanoid experiments.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2606.12995) · code: TBD
+
+### VLK — 2026-06
+
+- **Representation / generator:** reconstructed scenes supply synthetic, synchronized egocentric images, language commands, and robot-compatible kinematic trajectories.
+- **Input → output:** language and egocentric observation → short-horizon whole-body kinematic trajectory.
+- **Execution:** a whole-body tracker maps predicted trajectories to physical actions.
+- **Hardware:** Unitree G1.
+- **Links:** [project](https://vision-language-kinematics.github.io/) · [arXiv](https://arxiv.org/abs/2606.30645) · code: TBD
+
+### RoboReact — 2026-08
+
+- **Representation / generator:** generated egocentric videos are reconstructed into geometry-preserving 3D interaction keyframes and retargeted to the humanoid.
+- **Input → output:** one RGB-D observation → imagined manipulation video → refined whole-body skill.
+- **Execution:** online object-centric regrounding and a VLM-guided refinement loop feed a whole-body controller.
+- **Hardware:** real humanoid robots.
+- **Links:** project: TBD · [arXiv](https://arxiv.org/abs/2608.03387) · code: TBD
 
 ### HumanoidMimicGen — 2026-05
 
